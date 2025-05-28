@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Journal Publishing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Journal Publishing Platform</h1>
+
+  <div id="auth-section">
+    <h2>Register</h2>
+    <input type="email" id="registerEmail" placeholder="Email" />
+    <input type="password" id="registerPassword" placeholder="Password" />
+    <button onclick="register()">Register</button>
+
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="journal-section" style="display:none;">
+    <h2>Submit Journal</h2>
+    <input type="text" id="journalTitle" placeholder="Title" />
+    <textarea id="journalContent" placeholder="Content"></textarea>
+    <button onclick="submitJournal()">Submit</button>
+
+    <h2>All Journals</h2>
+    <div id="journals"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
