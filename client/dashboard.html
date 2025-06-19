@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Journal Publisher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-left">📚 Journal Publisher</div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="journal_submission.html">Submit</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+    <div class="dashboard-container">
+  <h2>Your Journals</h2>
+</div>
+
+  </nav>
+
+  <main>
+    <h2>All Journals</h2>
+    <div id="journals"></div>
+  </main>
+
+  <script>
+    function logout() {
+      localStorage.removeItem('token');
+      alert("Logged out successfully!");
+      window.location.href = 'login.html';
+    }
+
+    async function fetchJournals() {
+      try {
+        const res = await fetch('http://localhost:5000/api/journals/all');
+        const journals = await res.json();
+
+        const container = document.getElementById('journals');
+        container.innerHTML = '';
+
+        journals.forEach(journal => {
+          const div = document.createElement('div');
+          div.innerHTML = `<h3>${journal.title}</h3><p>${journal.content}</p><small>By: ${journal.authorId.email}</small>`;
+          container.appendChild(div);
+        });
+      } catch (err) {
+        alert('Error loading journals');
+      }
+    }
+
+    fetchJournals();
+  </script>
+</body>
+</html>
 
