@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Journal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-left">📚 Journal Publisher</div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </nav>
+
+  <main>
+    <h2>Submit a New Journal</h2>
+    <div id="alertContainer"></div>
+    <input type="text" id="title" placeholder="Journal Title">
+    <textarea id="content" placeholder="Journal Content" rows="6"></textarea>
+    <button onclick="submitJournal()">Submit</button>
+  </main>
+
+  <script>
+    function showAlert(message, type = 'success') {
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert ${type}`;
+      alertDiv.innerText = message;
+      document.getElementById('alertContainer').appendChild(alertDiv);
+      setTimeout(() => alertDiv.remove(), 4000);
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      alert("Logged out successfully!");
+      window.location.href = 'login.html';
+    }
+
+    async function submitJournal() {
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      const token = localStorage.getItem('token');
+
+      try {
+        const res = await fetch('http://localhost:5000/api/journals/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify({ title, content })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          showAlert('Journal submitted successfully!');
+          document.getElementById('title').value = '';
+          document.getElementById('content').value = '';
+        } else {
+          showAlert(data.message || 'Submission failed', 'error');
+        }
+      } catch (err) {
+        showAlert('Server error. Try again later.', 'error');
+      }
+    }
+  </script>
+</body>
+</html>
