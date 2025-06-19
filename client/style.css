@@ -1,30 +1,259 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+/* Reset and base styles */
+* {
+  margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  box-sizing: border-box;
 }
 
-h1 {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #f8faff, #eef2f7);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header section */
+header {
+  background: linear-gradient(to right, #004d99, #0066cc);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 2rem;
+  animation: slideIn 1s ease-out;
+}
+
+nav a {
+  color: white;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffe066;
+}
+
+/* Main hero section */
+main {
+  padding: 4rem 2rem;
   text-align: center;
+  background: url('https://images.unsplash.com/photo-1600369674448-9f2b3e0dd837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-input, textarea {
-  display: block;
-  width: 300px;
-  margin: 10px auto;
+.hero {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: #004080;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  background: #0073e6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 115, 230, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #005bb5;
+  transform: scale(1.05);
+}
+
+/* Login Page */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.6s ease;
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 100%;
   padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
-button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-#journals {
-  margin-top: 20px;
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Dashboard Page */
+.dashboard-container {
+  padding: 40px;
+  background-color: #f7f9fc;
+  animation: fadeIn 0.5s ease;
+}
+
+.dashboard-container h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.journal-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.journal-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.journal-card h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+/* Journal Submission Page */
+.submission-form {
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.6s ease;
+}
+
+.submission-form h2 {
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.submission-form input,
+.submission-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.submission-form button {
+  width: 100%;
+  padding: 14px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.submission-form button:hover {
+  background: #1e7e34;
+}
+
+/* Footer section */
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+  }
+
+  .hero {
+    padding: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .journal-list {
+    grid-template-columns: 1fr;
+  }
 }
